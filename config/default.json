@@ -1,0 +1,5 @@
+{
+    "serverPort" : 3001,
+    "dbUrl": "mongodb+srv://azatabdykalli:tIYFzvg08CKetmMj@taraz-express.jornrux.mongodb.net/?retryWrites=true&w=majority&appName=taraz-express",
+    "secretKey" : "mern-secret-key"
+}
