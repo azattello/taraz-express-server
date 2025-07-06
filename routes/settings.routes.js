@@ -26,7 +26,9 @@ router.post('/updateSettings', uploadContract.single('contract'), [
     check('chinaAddress').optional().isString(),
     check('whatsappNumber').optional().isString(),
     check('aboutUsText').optional().isString(),
-    check('prohibitedItemsText').optional().isString()
+    check('prohibitedItemsText').optional().isString(),
+    check('deliveryTime').optional().isString(),
+    check('cargoResponsibility').optional().isString(),
 ], async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -34,7 +36,7 @@ router.post('/updateSettings', uploadContract.single('contract'), [
             return res.status(400).json({ message: 'Неверный запрос', errors });
         }
 
-        const { videoLink, chinaAddress, whatsappNumber, aboutUsText, prohibitedItemsText } = req.body;
+        const { videoLink, chinaAddress, whatsappNumber, aboutUsText, prohibitedItemsText, deliveryTime, cargoResponsibility } = req.body;
 
         // Получаем текущие настройки или создаем новые
         let settings = await Settings.findOne();
@@ -48,7 +50,9 @@ router.post('/updateSettings', uploadContract.single('contract'), [
         if (whatsappNumber) settings.whatsappNumber = whatsappNumber;
         if (aboutUsText) settings.aboutUsText = aboutUsText;
         if (prohibitedItemsText) settings.prohibitedItemsText = prohibitedItemsText;
-
+        if (deliveryTime) settings.deliveryTime = deliveryTime;
+        if (cargoResponsibility) settings.cargoResponsibility = cargoResponsibility;
+        
         // Обработка загруженного файла, если он есть
         if (req.file) {
             const contractPath = `/uploads/contracts/${req.file.filename}`; // Формируем путь к загруженному документу

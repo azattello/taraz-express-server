@@ -10,7 +10,9 @@ const SettingsSchema = new Schema({
     price: { type: String, default: '' },
     currency: { type: String, default: '' },
     globalReferralBonusPercentage: { type: Number, default: 4 },
-    contractFilePath: { type: String, default: '' } // Поле для хранения пути к файлу
+    contractFilePath: { type: String, default: '' }, // Поле для хранения пути к файлу
+    cargoResponsibility: { type: String, default: '' }, // Ответственность за груз
+    deliveryTime: { type: String, default: '' }, // Срок доставки
 });
 
 
